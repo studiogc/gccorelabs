@@ -1,22 +1,51 @@
-# SOMA AI Web
+# SOMA AI Web Edition
 
-Versão web independente do app local SOMA AI. Depois de hospedada como site estático, ela não exige que o computador do proprietário fique ligado.
+Site independente do projeto SOMA AI, com interface responsiva para computador e celular. Depois de publicado em hospedagem estática, o computador do proprietário não precisa ficar ligado.
 
-## O que já está implementado
-- Interface responsiva com tema roxo/escuro.
-- Conversas de demonstração, nova conversa e histórico no armazenamento local do navegador.
-- Sugestões para Roblox/Luau, criação de sites e organização de ideias.
-- Copiar resposta e atalhos de teclado.
-- Sem bibliotecas JavaScript obrigatórias.
+## Incluído nesta edição
 
-## Limitação importante
-O chat está em modo de demonstração. As respostas são textos locais definidos em `script.js`, não conteúdo gerado por uma IA. Para ativar respostas reais, conecte um backend/serverless function a um provedor de IA. **Nunca coloque chaves de API em arquivos públicos.**
+- **Visão geral:** atalhos e estado dos módulos.
+- **SOMA Assistente:** conversas de demonstração, histórico local e copiar respostas.
+- **Projetos e memória:** criar, editar e apagar notas locais.
+- **Laboratório de código:** rascunho Luau/JavaScript/HTML/CSS/texto, copiar e baixar arquivo.
+- **Monitor do sistema:** interface preparada para métricas; sem leitura real de CPU/RAM/disco pelo navegador.
+- **DX-1:** checklist manual seguro e exportação de relatório.
+- **Performance Engine:** perfis de recomendações, sem alterar o Windows.
+- **Game Center:** atalhos para páginas oficiais do Roblox, Roblox Studio e Minecraft.
+- **GC Protection:** orientações de segurança e privacidade.
+- **Voz:** tela de preparação, sem captura de áudio.
+- **Configurações:** nome de exibição, modo compacto, reduzir animações, exportar e apagar dados locais.
+- Layout adaptável a celular e manifesto de aplicação web.
 
-## Publicação
-Em Settings → Pages, selecione Deploy from a branch, branch `main`, pasta `/(root)`, e salve. O endereço esperado é `https://studiogc.github.io/gccorelabs/` depois que GitHub Pages estiver ativado e a publicação terminar.
+## Limitações atuais — importante
 
-## Arquivos
-- `index.html` — estrutura.
+Esta é a **versão web de interface**, não um agente de sistema nem uma IA completa:
+- As respostas do chat são textos locais de demonstração. Nenhum modelo de IA está conectado.
+- Conversas, notas, preferências e rascunhos ficam no armazenamento do navegador; não há contas reais nem sincronização entre dispositivos.
+- O site não lê CPU, RAM, disco, processos ou temperatura reais e não controla o Windows.
+- Os botões do Game Center abrem páginas oficiais; não iniciam programas instalados.
+- Voz e monitoramento real ainda exigem implementação.
+
+## Próximas etapas técnicas
+
+1. Publicar o site com GitHub Pages.
+2. Implementar backend seguro para contas, sincronização e provedor de IA; nunca colocar chaves secretas em JavaScript público.
+3. Desenvolver um agente Windows separado, com permissões mínimas e consentimento explícito, para métricas locais.
+4. Implementar voz por um provedor apropriado e controles claros de permissão.
+5. Testar no celular e em navegadores diferentes.
+
+## Publicação no GitHub Pages
+
+No repositório, abra **Settings → Pages**. Em **Build and deployment**, selecione **Deploy from a branch**, branch `main`, pasta `/(root)` e salve. Quando a publicação terminar, o endereço esperado é:
+
+https://studiogc.github.io/gccorelabs/
+
+A URL só estará disponível depois de ativar o Pages e concluir a publicação.
+
+## Arquivos principais
+
+- `index.html` — estrutura e módulos da interface.
 - `style.css` — visual responsivo.
-- `script.js` — chat de demonstração e histórico local.
+- `script.js` — navegação e funcionalidades locais.
+- `manifest.webmanifest` — metadados para instalação como web app.
 - `favicon.svg` — ícone.
