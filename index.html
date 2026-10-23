@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0913">
+<title>SOMA AI</title>
+<meta name="description" content="SOMA AI — seu espaço para conversar, criar e programar.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><div class="gem">◆</div><div><strong>SOMA <span>AI</span></strong><small>Seu espaço de criação</small></div><button class="icon-btn mobile-close" id="closeSidebar" aria-label="Fechar menu">×</button></div>
+    <button class="new-chat" id="newChat"><span>＋</span> Nova conversa</button>
+    <div class="side-label">RECENTES</div>
+    <div class="history" id="history"></div>
+    <div class="side-bottom"><div class="status-dot"></div><div><strong>SOMA AI Web</strong><small>Interface independente</small></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><button class="icon-btn menu-btn" id="openSidebar" aria-label="Abrir menu">☰</button><div class="crumb">SOMA AI <span>/</span> <b id="currentTitle">Nova conversa</b></div><div class="top-actions"><span class="web-badge"><i></i> WEB</span><button class="avatar" title="SOMA AI">S</button></div></header>
+    <section class="conversation" id="conversation">
+      <div class="welcome" id="welcome">
+        <div class="welcome-gem">◆</div><p class="eyebrow">UM NOVO ESPAÇO PARA CRIAR</p>
+        <h1>O que vamos<br><em>construir hoje?</em></h1>
+        <p class="welcome-sub">Organize suas ideias, desenvolva projetos e transforme perguntas em próximos passos.</p>
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Me ajude a criar um sistema no Roblox Studio com Luau."><span>⌘</span><b>Programar no Roblox</b><small>Scripts, sistemas e depuração</small><span class="arrow">↗</span></button>
+          <button class="suggestion" data-prompt="Me ajude a planejar um site moderno e responsivo."><span>▧</span><b>Criar um site</b><small>Interface, estrutura e ideias</small><span class="arrow">↗</span></button>
+          <button class="suggestion" data-prompt="Organize esta ideia em etapas práticas."><span>✳</span><b>Organizar uma ideia</b><small>Plano claro, passo a passo</small><span class="arrow">↗</span></button>
+          <button class="suggestion" data-prompt="Explique um assunto de forma simples e com exemplos."><span>◎</span><b>Aprender algo novo</b><small>Explicações diretas</small><span class="arrow">↗</span></button>
+        </div>
+      </div>
+      <div class="messages" id="messages" aria-live="polite"></div>
+    </section>
+    <div class="composer-wrap"><form class="composer" id="chatForm"><textarea id="prompt" rows="1" maxlength="8000" placeholder="Pergunte alguma coisa ao SOMA..." aria-label="Mensagem"></textarea><div class="composer-bottom"><div class="composer-hint"><span>↵</span> enviar <span class="hint-sep">·</span> <span>Shift + ↵</span> nova linha</div><button class="send-btn" id="sendBtn" type="submit" aria-label="Enviar mensagem">↑</button></div></form><p class="disclaimer">A interface está pronta para integração com um modelo de IA. As respostas de demonstração não são geradas por uma IA.</p></div>
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
