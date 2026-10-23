@@ -116,3 +116,58 @@ body{overflow-x:hidden}
  .primary-btn,.secondary-btn,.danger-btn{padding:9px 10px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* SOMA AI ChatGPT-inspired interface v0.6 */
+:root{--bg:#212121;--panel:#2f2f2f;--panel2:#262626;--line:#424242;--text:#ececec;--muted:#a0a0a0;--purple:#c6a7ff}
+body{background:#212121;color:#ececec;font-family:Arial,Helvetica,sans-serif}
+.app-shell{background:#212121}
+.sidebar{background:#171717;border-right:1px solid #303030}
+.brand strong{letter-spacing:.2px}
+.new-chat{background:#212121;border-color:#424242;border-radius:10px;padding:12px}
+.nav-item{color:#c5c5c5;border-radius:8px;padding:10px 9px}
+.nav-item:hover,.nav-item.active{background:#2b2b2b;border-color:transparent}
+.side-label{color:#8d8d8d}
+.side-bottom{border-color:#303030}
+.main{background:#212121}
+.topbar{background:#212121;border-color:#303030}
+.page-area{max-width:1440px}
+.hero-panel{background:#262626;border-color:#3c3c3c;border-radius:16px}
+.primary-btn{background:#ececec;color:#202020;border-radius:22px}
+.secondary-btn{background:#2b2b2b;border-color:#494949;color:#ececec;border-radius:22px}
+.module-card,.status-card,.metric-card,.profile-card,.game-card,.panel,.chat-history-panel,.chat-panel{background:#262626;border-color:#3b3b3b;border-radius:12px}
+.field,.select-field,.report-box{background:#303030;border-color:#494949;color:#ececec}
+.chat-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 0 18px;border-bottom:1px solid #353535}
+.model-picker-wrap{display:flex;align-items:center;gap:9px;min-width:0}
+.model-spark{font-size:19px;color:#d7c1ff}
+.model-picker{max-width:230px;background:transparent;color:#f1f1f1;border:0;font-size:16px;font-weight:600;padding:8px 2px;outline-offset:3px}
+.model-picker option{background:#262626;color:#f1f1f1}
+.model-demo{font-size:9px;letter-spacing:1px;color:#b6b6b6;border:1px solid #515151;border-radius:20px;padding:4px 7px}
+.chat-intro{text-align:center;padding:38px 12px 20px}
+.chat-intro .eyebrow{margin-bottom:10px;color:#b7a0dc}
+.chat-intro h1{font-size:clamp(27px,4vw,36px);font-weight:600;letter-spacing:-1px;margin:0}
+.chat-intro .muted{margin:10px 0 0}
+.chat-layout{grid-template-columns:minmax(0,1fr);max-width:850px;margin:0 auto;min-height:0}
+.chat-history-panel{display:none}
+.chat-panel{min-height:400px;background:transparent;border:0;padding:0}
+.messages{min-height:250px;max-height:calc(100vh - 390px);padding:12px 12px 20px}
+.chat-welcome{padding:16px 10px}
+.welcome-gem{display:none}
+.chat-welcome h2{display:none}
+.chat-welcome .muted{display:none}
+.suggestions{max-width:660px;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.suggestions button{background:#262626;border:1px solid #414141;border-radius:14px;padding:15px;color:#dedede;font-size:12px;min-height:58px}
+.suggestions button:hover{background:#303030;border-color:#686868}
+.composer{background:#2f2f2f;border:1px solid #555;border-radius:26px;padding:12px 14px 9px;box-shadow:0 4px 20px #0002}
+.composer textarea{font-size:14px;min-height:42px;padding:7px 5px 12px;color:#f1f1f1}
+.composer textarea::placeholder{color:#a2a2a2}
+.send-btn{width:34px;height:34px;border-radius:50%;background:#f0f0f0;color:#242424}
+.composer-hint{font-size:10px}
+.tiny-note{text-align:center}
+.bubble{font-size:14px;line-height:1.75}
+.user .bubble{background:#303030;border-color:#454545}
+.assistant .bubble{color:#e6e6e6}
+.copy-btn{border-color:#4b4b4b;background:#2a2a2a;color:#ccc}
+.toast{background:#303030;border-color:#555}
+@media(min-width:761px){.chat-layout{grid-template-columns:minmax(0,1fr)}.chat-panel{max-width:850px;width:100%;margin:0 auto}.chat-intro{padding-top:46px}.messages{max-height:calc(100vh - 410px)}}
+@media(max-width:760px){.chat-topline{padding-top:2px}.model-picker{font-size:14px;max-width:175px}.chat-intro{padding:32px 6px 14px}.chat-layout{gap:0}.chat-panel{min-height:360px}.messages{max-height:none;min-height:210px}.suggestions{grid-template-columns:1fr;gap:8px}.suggestions button{min-height:48px;padding:12px}.chat-topline .secondary-btn{font-size:10px;padding:9px 10px}}
