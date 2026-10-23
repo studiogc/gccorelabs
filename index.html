@@ -1,42 +1,119 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b0913">
-<title>SOMA AI</title>
-<meta name="description" content="SOMA AI — seu espaço para conversar, criar e programar.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="SOMA AI — ambiente web para assistência, projetos, diagnóstico e ferramentas gamer.">
+<title>SOMA AI — Web Edition</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app-shell">
-  <aside class="sidebar" id="sidebar">
-    <div class="brand"><div class="gem">◆</div><div><strong>SOMA <span>AI</span></strong><small>Seu espaço de criação</small></div><button class="icon-btn mobile-close" id="closeSidebar" aria-label="Fechar menu">×</button></div>
-    <button class="new-chat" id="newChat"><span>＋</span> Nova conversa</button>
-    <div class="side-label">RECENTES</div>
-    <div class="history" id="history"></div>
-    <div class="side-bottom"><div class="status-dot"></div><div><strong>SOMA AI Web</strong><small>Interface independente</small></div></div>
-  </aside>
-  <main class="main">
-    <header class="topbar"><button class="icon-btn menu-btn" id="openSidebar" aria-label="Abrir menu">☰</button><div class="crumb">SOMA AI <span>/</span> <b id="currentTitle">Nova conversa</b></div><div class="top-actions"><span class="web-badge"><i></i> WEB</span><button class="avatar" title="SOMA AI">S</button></div></header>
-    <section class="conversation" id="conversation">
-      <div class="welcome" id="welcome">
-        <div class="welcome-gem">◆</div><p class="eyebrow">UM NOVO ESPAÇO PARA CRIAR</p>
-        <h1>O que vamos<br><em>construir hoje?</em></h1>
-        <p class="welcome-sub">Organize suas ideias, desenvolva projetos e transforme perguntas em próximos passos.</p>
-        <div class="suggestions">
-          <button class="suggestion" data-prompt="Me ajude a criar um sistema no Roblox Studio com Luau."><span>⌘</span><b>Programar no Roblox</b><small>Scripts, sistemas e depuração</small><span class="arrow">↗</span></button>
-          <button class="suggestion" data-prompt="Me ajude a planejar um site moderno e responsivo."><span>▧</span><b>Criar um site</b><small>Interface, estrutura e ideias</small><span class="arrow">↗</span></button>
-          <button class="suggestion" data-prompt="Organize esta ideia em etapas práticas."><span>✳</span><b>Organizar uma ideia</b><small>Plano claro, passo a passo</small><span class="arrow">↗</span></button>
-          <button class="suggestion" data-prompt="Explique um assunto de forma simples e com exemplos."><span>◎</span><b>Aprender algo novo</b><small>Explicações diretas</small><span class="arrow">↗</span></button>
-        </div>
-      </div>
-      <div class="messages" id="messages" aria-live="polite"></div>
-    </section>
-    <div class="composer-wrap"><form class="composer" id="chatForm"><textarea id="prompt" rows="1" maxlength="8000" placeholder="Pergunte alguma coisa ao SOMA..." aria-label="Mensagem"></textarea><div class="composer-bottom"><div class="composer-hint"><span>↵</span> enviar <span class="hint-sep">·</span> <span>Shift + ↵</span> nova linha</div><button class="send-btn" id="sendBtn" type="submit" aria-label="Enviar mensagem">↑</button></div></form><p class="disclaimer">A interface está pronta para integração com um modelo de IA. As respostas de demonstração não são geradas por uma IA.</p></div>
-  </main>
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="gem">✦</div><div><strong>SOMA <span>AI</span></strong><small>WEB EDITION · v0.5</small></div><button class="icon-btn mobile-close" id="closeSidebar" aria-label="Fechar menu">×</button></div>
+  <button class="new-chat" data-action="new-chat"><span>＋</span> Nova conversa</button>
+  <nav class="nav-list" aria-label="Navegação principal">
+    <div class="side-label">ESPAÇO DE TRABALHO</div>
+    <button class="nav-item active" data-view="home"><span>⌂</span> Visão geral</button>
+    <button class="nav-item" data-view="chat"><span>✧</span> SOMA Assistente <i class="nav-pill">AI</i></button>
+    <button class="nav-item" data-view="projects"><span>▧</span> Projetos e memória</button>
+    <button class="nav-item" data-view="code"><span>⌘</span> Laboratório de código</button>
+    <div class="side-label">SOMA SYSTEM</div>
+    <button class="nav-item" data-view="monitor"><span>▥</span> Monitor do sistema</button>
+    <button class="nav-item" data-view="dx"><span>⌕</span> DX-1 Diagnóstico</button>
+    <button class="nav-item" data-view="performance"><span>ϟ</span> Performance Engine</button>
+    <button class="nav-item" data-view="games"><span>🎮</span> Game Center</button>
+    <button class="nav-item" data-view="protection"><span>⬡</span> GC Protection</button>
+    <div class="side-label">PREFERÊNCIAS</div>
+    <button class="nav-item" data-view="voice"><span>♫</span> Voz</button>
+    <button class="nav-item" data-view="settings"><span>⚙</span> Configurações</button>
+  </nav>
+  <div class="side-bottom"><div class="status-dot"></div><div><strong>SOMA AI Web</strong><small id="storageState">Dados salvos neste navegador</small></div><button class="icon-btn" data-view="settings" title="Configurações">⚙</button></div>
+</aside>
+<main class="main">
+<header class="topbar"><button class="icon-btn menu-btn" id="openSidebar" aria-label="Abrir menu">☰</button><div class="crumb">SOMA AI <span>/</span> <b id="pageTitle">Visão geral</b></div><div class="top-actions"><span class="web-badge"><i></i> WEB EDITION</span><button class="avatar" id="profileButton" title="Perfil local">S</button></div></header>
+<div class="page-area" id="pageArea">
+<section class="view active" id="view-home">
+  <div class="hero-panel"><div><p class="eyebrow">SOMA AI · AMBIENTE INTEGRADO</p><h1>Olá, criador.<br><em>Vamos construir?</em></h1><p class="muted hero-copy">Um espaço para conversar, desenvolver projetos e acessar as ferramentas do SOMA.</p><button class="primary-btn" data-view="chat">✦ Abrir assistente <span>→</span></button></div><div class="hero-orb"><div class="orb-core">✦</div><div class="orb-ring ring-one"></div><div class="orb-ring ring-two"></div></div></div>
+  <div class="section-heading"><div><h2>Centro de controle</h2><p>Atalhos para os módulos do projeto.</p></div><span class="tag">WEB v0.5</span></div>
+  <div class="module-grid">
+    <button class="module-card" data-view="chat"><span class="module-icon purple">✧</span><b>SOMA Assistente</b><small>Conversa e ajuda para criar</small><span class="card-arrow">↗</span></button>
+    <button class="module-card" data-view="monitor"><span class="module-icon blue">▥</span><b>Monitor</b><small>Painel de recursos do dispositivo</small><span class="card-arrow">↗</span></button>
+    <button class="module-card" data-view="dx"><span class="module-icon cyan">⌕</span><b>DX-1</b><small>Checklist de diagnóstico</small><span class="card-arrow">↗</span></button>
+    <button class="module-card" data-view="performance"><span class="module-icon orange">ϟ</span><b>Performance</b><small>Perfis e recomendações</small><span class="card-arrow">↗</span></button>
+    <button class="module-card" data-view="games"><span class="module-icon green">🎮</span><b>Game Center</b><small>Central de jogos e atalhos</small><span class="card-arrow">↗</span></button>
+    <button class="module-card" data-view="projects"><span class="module-icon pink">▧</span><b>Projetos & memória</b><small>Notas e conteúdo guardado</small><span class="card-arrow">↗</span></button>
+  </div>
+  <div class="section-heading"><div><h2>Status dos módulos</h2><p>Estado real desta edição web.</p></div></div>
+  <div class="status-grid"><div class="status-card"><span class="status-mark ready"></span><div><b>Interface Web</b><small>Disponível neste site</small></div><span class="status-text">PRONTO</span></div><div class="status-card"><span class="status-mark local"></span><div><b>Armazenamento</b><small>Local no navegador</small></div><span class="status-text">LOCAL</span></div><div class="status-card"><span class="status-mark pending"></span><div><b>IA e sincronização</b><small>Precisa de backend</small></div><span class="status-text">PENDENTE</span></div><div class="status-card"><span class="status-mark pending"></span><div><b>Controle do Windows</b><small>Não disponível pelo site</small></div><span class="status-text">PENDENTE</span></div></div>
+  <p class="notice"><b>Transparência:</b> a versão web não lê CPU/RAM reais nem controla o Windows. Os painéis demonstrativos estão identificados; acesso real exige um aplicativo local seguro ou serviço autorizado.</p>
+</section>
+
+<section class="view" id="view-chat">
+  <div class="view-heading"><div><p class="eyebrow">AI CORE</p><h1>SOMA <em>Assistente</em></h1><p class="muted">Converse, organize ideias e trabalhe em código. Esta versão ainda usa respostas de demonstração.</p></div><button class="secondary-btn" data-action="new-chat">＋ Nova conversa</button></div>
+  <div class="chat-layout"><aside class="chat-history-panel"><div class="panel-title">HISTÓRICO <button class="text-btn" data-action="clear-chats">Limpar</button></div><div id="history" class="history"></div></aside>
+    <div class="chat-panel"><div id="messages" class="messages"><div class="chat-welcome"><div class="welcome-gem">✦</div><h2>O que vamos criar hoje?</h2><p class="muted">Escolha uma sugestão ou escreva sua própria mensagem.</p><div class="suggestions"><button data-prompt="Me ajude a criar um sistema no Roblox Studio com Luau.">⌘ Programar no Roblox</button><button data-prompt="Me ajude a diagnosticar um computador lento com segurança.">⌕ Diagnosticar computador</button><button data-prompt="Organize meu projeto em etapas e tarefas.">▧ Organizar um projeto</button><button data-prompt="Explique um assunto de forma simples e com exemplos.">✧ Aprender algo novo</button></div></div></div>
+    <form class="composer" id="chatForm"><textarea id="prompt" rows="1" maxlength="8000" placeholder="Pergunte alguma coisa ao SOMA..." aria-label="Mensagem"></textarea><div class="composer-bottom"><span class="composer-hint">Enter para enviar · Shift+Enter para nova linha</span><button class="send-btn" type="submit" aria-label="Enviar">↑</button></div></form><p class="tiny-note">Modo demonstração: as respostas não vêm de um modelo de IA conectado.</p></div>
+  </div>
+</section>
+
+<section class="view" id="view-monitor">
+ <div class="view-heading"><div><p class="eyebrow">SOMA SYSTEM</p><h1>Monitor do <em>sistema</em></h1><p class="muted">Painel visual preparado para integrar métricas reais no futuro.</p></div><span class="tag warning-tag">SIMULAÇÃO</span></div>
+ <div class="notice"><b>Importante:</b> um site comum não tem permissão para consultar uso real de CPU, memória ou disco do Windows. Os valores abaixo são apenas ilustrativos, não medições do seu PC.</div>
+ <div class="metric-grid"><div class="metric-card"><div class="metric-head"><span>CPU</span><span class="module-icon purple">ϟ</span></div><strong>—<small>%</small></strong><div class="meter"><i style="width:34%"></i></div><p>Leitura real indisponível</p></div><div class="metric-card"><div class="metric-head"><span>MEMÓRIA RAM</span><span class="module-icon blue">▤</span></div><strong>—<small> GB</small></strong><div class="meter blue-meter"><i style="width:57%"></i></div><p>Leitura real indisponível</p></div><div class="metric-card"><div class="metric-head"><span>DISCO</span><span class="module-icon cyan">▥</span></div><strong>—<small>%</small></strong><div class="meter cyan-meter"><i style="width:22%"></i></div><p>Leitura real indisponível</p></div></div>
+ <div class="panel"><div class="panel-title">Como habilitar dados reais</div><p class="muted">Conectar o site a um agente local do SOMA para Windows, com permissões mínimas, consentimento explícito e comunicação autenticada. O agente ainda precisa ser desenvolvido.</p><ul class="plain-list"><li>CPU, RAM e disco em tempo real</li><li>Informações do sistema e versão do Windows</li><li>Registro de métricas sem capturar arquivos pessoais</li></ul></div>
+</section>
+
+<section class="view" id="view-dx">
+ <div class="view-heading"><div><p class="eyebrow">DIAGNÓSTICO</p><h1>DX-1 <em>Diagnostics</em></h1><p class="muted">Checklist manual para investigar lentidão e falhas comuns.</p></div><button class="secondary-btn" id="resetDx">↻ Reiniciar checklist</button></div>
+ <div class="notice"><b>Modo seguro:</b> este checklist não executa comandos, não altera o sistema e não apaga arquivos.</div>
+ <div class="panel"><div class="panel-title">Verificações do usuário <span class="tag" id="dxProgress">0 / 6</span></div><div class="checklist" id="dxChecklist"></div><div class="progress-track"><i id="dxProgressBar"></i></div><p class="muted" id="dxSummary">Marque os itens que você já verificou.</p><button class="primary-btn" id="dxReport">Gerar relatório de texto</button><textarea class="report-box" id="dxReportText" readonly hidden></textarea><button class="secondary-btn" id="copyDx" hidden>Copiar relatório</button></div>
+</section>
+
+<section class="view" id="view-performance">
+ <div class="view-heading"><div><p class="eyebrow">PERFORMANCE ENGINE</p><h1>Perfis de <em>desempenho</em></h1><p class="muted">Escolha um perfil de recomendações. A seleção é salva no navegador e não altera o Windows.</p></div></div>
+ <div class="profile-grid"><button class="profile-card selected" data-profile="balanced"><span class="profile-symbol">◈</span><b>Equilibrado</b><small>Prioriza estabilidade e uso normal.</small><span class="profile-selected">Selecionado</span></button><button class="profile-card" data-profile="economy"><span class="profile-symbol">☾</span><b>Economia</b><small>Sugere fechar apps desnecessários e reduzir abas.</small><span class="profile-selected">Selecionar</span></button><button class="profile-card" data-profile="gaming"><span class="profile-symbol">ϟ</span><b>Jogos</b><small>Sugere fechar tarefas pesadas antes de jogar.</small><span class="profile-selected">Selecionar</span></button></div>
+ <div class="panel"><div class="panel-title">Recomendações do perfil <span class="tag" id="profileName">Equilibrado</span></div><ul class="plain-list" id="profileTips"></ul><p class="muted">Nenhum processo será encerrado automaticamente. Evite ferramentas que prometem acelerar o PC desativando serviços de segurança.</p></div>
+</section>
+
+<section class="view" id="view-games">
+ <div class="view-heading"><div><p class="eyebrow">GAME CENTER</p><h1>Seu espaço <em>gamer</em></h1><p class="muted">Centralize seus jogos e ferramentas favoritas.</p></div></div>
+ <div class="game-grid"><article class="game-card"><div class="game-art roblox-art">R</div><div class="game-info"><b>Roblox</b><small>Plataforma de jogos</small><a href="https://www.roblox.com/" target="_blank" rel="noopener noreferrer">Abrir site ↗</a></div></article><article class="game-card"><div class="game-art studio-art">◩</div><div class="game-info"><b>Roblox Studio</b><small>Criação de experiências</small><a href="https://create.roblox.com/" target="_blank" rel="noopener noreferrer">Abrir Creator Hub ↗</a></div></article><article class="game-card"><div class="game-art minecraft-art">▦</div><div class="game-info"><b>Minecraft</b><small>Site oficial do jogo</small><a href="https://www.minecraft.net/" target="_blank" rel="noopener noreferrer">Abrir site ↗</a></div></article></div>
+ <div class="notice">O navegador não pode iniciar programas instalados diretamente nem verificar se eles estão instalados. Estes botões abrem sites oficiais.</div>
+</section>
+
+<section class="view" id="view-protection">
+ <div class="view-heading"><div><p class="eyebrow">GC PROTECTION</p><h1>Proteção e <em>permissões</em></h1><p class="muted">Área de transparência e boas práticas de segurança.</p></div><span class="tag">CENTRAL INFORMATIVA</span></div>
+ <div class="security-banner"><span class="security-icon">⬡</span><div><h2>Proteção em primeiro lugar</h2><p>Esta página não é antivírus e não está monitorando o computador. Ela apresenta recomendações seguras.</p></div></div>
+ <div class="security-list"><div><span class="security-check">✓</span><div><b>Não pedir senhas</b><p>Não compartilhe senhas, códigos de autenticação ou chaves privadas no chat.</p></div></div><div><span class="security-check">✓</span><div><b>Sem ações escondidas</b><p>O site não acessa câmera, microfone, arquivos ou processos sem uma função explícita e consentimento.</p></div></div><div><span class="security-check">✓</span><div><b>Limpeza manual</b><p>Uma futura ferramenta de limpeza deverá mostrar o que será removido e pedir confirmação antes de agir.</p></div></div><div><span class="security-check">✓</span><div><b>Chaves de IA protegidas</b><p>Uma integração real deve guardar credenciais no servidor, nunca no JavaScript público.</p></div></div></div>
+</section>
+
+<section class="view" id="view-projects">
+ <div class="view-heading"><div><p class="eyebrow">AI_MEMORY</p><h1>Projetos e <em>memória</em></h1><p class="muted">Guarde notas e ideias neste navegador.</p></div><button class="primary-btn" id="newNote">＋ Nova nota</button></div>
+ <div class="project-layout"><div class="panel"><div class="panel-title">Nova nota / projeto</div><label for="noteTitle">Título</label><input id="noteTitle" class="field" maxlength="100" placeholder="Ex.: Sistema de inventário"><label for="noteBody">Conteúdo</label><textarea id="noteBody" class="field textarea-field" maxlength="12000" placeholder="Anote ideias, tarefas, scripts ou decisões..."></textarea><button class="primary-btn" id="saveNote">Salvar nota</button><p class="tiny-note">As notas ficam neste navegador. Ainda não sincronizam entre dispositivos.</p></div><div class="panel"><div class="panel-title">Notas salvas <span class="tag" id="noteCount">0</span></div><div id="notesList" class="notes-list"></div></div></div>
+</section>
+
+<section class="view" id="view-code">
+ <div class="view-heading"><div><p class="eyebrow">DEV LAB</p><h1>Laboratório de <em>código</em></h1><p class="muted">Rascunhe e copie trechos de código sem perder o conteúdo.</p></div><button class="secondary-btn" id="clearCode">Limpar editor</button></div>
+ <div class="panel code-panel"><div class="editor-toolbar"><span><i class="editor-dot"></i><i class="editor-dot"></i><i class="editor-dot"></i></span><span id="codeLanguageLabel">Rascunho · texto</span><select id="codeLanguage" class="select-field"><option value="lua">Luau</option><option value="js">JavaScript</option><option value="html">HTML</option><option value="css">CSS</option><option value="text">Texto</option></select></div><textarea id="codeEditor" class="code-editor" spellcheck="false" placeholder="-- Escreva seu código aqui..."></textarea><div class="editor-footer"><span class="muted" id="codeCount">0 caracteres</span><div><button class="secondary-btn" id="downloadCode">Baixar arquivo</button> <button class="primary-btn" id="copyCode">Copiar código</button></div></div></div>
+ <div class="notice">Este editor não executa código. Revise scripts antes de usá-los e nunca execute código desconhecido sem entender o que ele faz.</div>
+</section>
+
+<section class="view" id="view-voice">
+ <div class="view-heading"><div><p class="eyebrow">VOICE</p><h1>Experiência de <em>voz</em></h1><p class="muted">Preparação da área de voz do SOMA AI.</p></div><span class="tag warning-tag">EM DESENVOLVIMENTO</span></div>
+ <div class="voice-card"><div class="voice-orb">♫</div><h2>Converse com o SOMA</h2><p class="muted">A conversa por voz ainda não está conectada. Para ativá-la, será necessário integrar um serviço de voz e implementar permissões explícitas do navegador.</p><button class="secondary-btn" id="voiceInfo">Ver requisitos</button><p id="voiceRequirements" class="muted" hidden>1. Backend para processar áudio. 2. Provedor de reconhecimento e síntese de voz. 3. Botão claro para iniciar/parar e pedir permissão antes de usar o microfone.</p></div>
+</section>
+
+<section class="view" id="view-settings">
+ <div class="view-heading"><div><p class="eyebrow">PREFERÊNCIAS</p><h1>Configurações</h1><p class="muted">Personalize a experiência neste navegador.</p></div></div>
+ <div class="settings-layout"><div class="panel settings-panel"><div class="panel-title">Interface</div><label class="setting-row"><span><b>Nome de exibição</b><small>Usado apenas na interface local.</small></span><input id="displayName" class="field short-field" maxlength="30" value="Criador"></label><label class="setting-row"><span><b>Compactar interface</b><small>Reduz espaçamentos entre cartões.</small></span><input id="compactMode" type="checkbox" class="toggle"></label><label class="setting-row"><span><b>Reduzir animações</b><small>Desativa movimentos decorativos.</small></span><input id="reduceMotion" type="checkbox" class="toggle"></label><button class="primary-btn" id="saveSettings">Salvar configurações</button></div>
+ <div class="panel settings-panel"><div class="panel-title">Dados e privacidade</div><p class="muted">O histórico e as notas desta edição ficam no armazenamento local do navegador. Limpar os dados do site pode apagá-los.</p><button class="secondary-btn" id="exportData">Exportar meus dados (.json)</button><button class="danger-btn" id="deleteLocalData">Apagar dados locais</button><p class="tiny-note">A exclusão só acontece depois de uma confirmação.</p></div></div>
+ <div class="panel about-panel"><div class="panel-title">Sobre o SOMA AI Web</div><div class="about-row"><span>Versão</span><b>0.5.0 · Web Edition</b></div><div class="about-row"><span>Hospedagem</span><b>GitHub Pages (quando ativado)</b></div><div class="about-row"><span>Modelo de IA</span><b>Não conectado</b></div><div class="about-row"><span>Sincronização online</span><b>Requer backend e contas</b></div></div>
+</section>
 </div>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="script.js"></script>
-</body>
-</html>
+</body></html>
